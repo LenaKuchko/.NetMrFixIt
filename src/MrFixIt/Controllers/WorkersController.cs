@@ -52,6 +52,22 @@ namespace MrFixIt.Controllers
         public IActionResult MarkComplete(Job job)
         {
             job.Completed = true;
+            job.Pending = false;
+            db.Entry(job).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult MarkPending(int id)
+        {
+            var thisItem = db.Jobs.FirstOrDefault(item => item.JobId == id);
+            return View(thisItem);
+        }
+
+        [HttpPost]
+        public IActionResult MarkPending(Job job)
+        {
+            job.Pending = true;
             db.Entry(job).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");

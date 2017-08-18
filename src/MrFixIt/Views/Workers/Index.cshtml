@@ -15,13 +15,23 @@
         {
             <h5>@Job.Title</h5>
 
-            @if (@Job.Completed)
+            @if (!@Job.Completed)
             {
-                <div>Status: Complete!</div>
+                <div class="@Job.JobId">Status: Uncomplete! Change status</div>
+                @if (@Job.Pending)
+                {
+                    <div>Current job!</div>
+                }
+                else
+                {
+                    <div class="@Job.JobId@Job.Pending">Mark as current job!</div>
+                }
+                
             }
             else
             {
-                <div class="@Job.JobId">Status: Uncomplete! Change status</div>
+                <div>Status: Complete!</div>
+                
             }
 
             <div id="@Job.JobId"></div>
@@ -33,6 +43,19 @@
                         type: 'GET',
                         dataType: 'html',
                         url: '@Url.Action("MarkComplete")',
+                        data: {id : @Job.JobId},
+                        success: function (result) {
+                            $('#@Job.JobId').html(result);
+                        }
+                    });
+                });
+
+                $('.@Job.JobId@Job.Pending').click(function () {
+                    console.log("Hi");
+                    $.ajax({
+                        type: 'GET',
+                        dataType: 'html',
+                        url: '@Url.Action("MarkPending")',
                         data: {id : @Job.JobId},
                         success: function (result) {
                             $('#@Job.JobId').html(result);
