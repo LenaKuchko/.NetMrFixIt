@@ -8,27 +8,27 @@
 @if (User.Identity.IsAuthenticated)
 {
 
-    <div class="text-center">
+    <div class="text-left">
         <h4>Hello Worker @Model.FirstName @Model.LastName. You are Logged In</h4>
         <h3>Your Current Jobs:</h3>
         @foreach (var Job in Model.Jobs)
         {
             <h5>@Job.Title</h5>
-            if (!@Job.Completed)
+
+            @if (@Job.Completed)
             {
-                <div class="@Job.JobId">
-                    Status: Uncompleted
-                    <div id="@Job.JobId"></div>
-                </div>
+                <div>Status: Complete!</div>
             }
             else
             {
-                <div>Status: Done! </div>
+                <div class="@Job.JobId">Status: Uncomplete! Change status</div>
             }
 
-            <script>
+            <div id="@Job.JobId"></div>
+            <hr />
+            <script type="text/javascript">
                 $('.@Job.JobId').click(function () {
-                    console.log("complete");
+                    console.log("Hi");
                     $.ajax({
                         type: 'GET',
                         dataType: 'html',
@@ -40,6 +40,7 @@
                     });
                 });
             </script>
+
         }
         @if (Model.Avaliable)
         {
@@ -50,6 +51,4 @@
             <p>You are already assigned to a job.</p>
         }
     </div>
-
-    
 }
