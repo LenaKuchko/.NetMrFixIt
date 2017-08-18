@@ -14,7 +14,32 @@
         @foreach (var Job in Model.Jobs)
         {
             <h5>@Job.Title</h5>
+            if (!@Job.Completed)
+            {
+                <div class="@Job.JobId">
+                    Status: Uncompleted
+                    <div id="@Job.JobId"></div>
+                </div>
+            }
+            else
+            {
+                <div>Status: Done! </div>
+            }
 
+            <script>
+                $('.@Job.JobId').click(function () {
+                    console.log("complete");
+                    $.ajax({
+                        type: 'GET',
+                        dataType: 'html',
+                        url: '@Url.Action("MarkComplete")',
+                        data: {id : @Job.JobId},
+                        success: function (result) {
+                            $('#@Job.JobId').html(result);
+                        }
+                    });
+                });
+            </script>
         }
         @if (Model.Avaliable)
         {
@@ -25,4 +50,6 @@
             <p>You are already assigned to a job.</p>
         }
     </div>
+
+    
 }

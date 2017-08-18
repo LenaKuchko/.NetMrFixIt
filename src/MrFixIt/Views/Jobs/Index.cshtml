@@ -22,18 +22,6 @@
         else
         {
             <li>This Job is claimed by @Job.Worker.FirstName @Job.Worker.LastName</li>
-            if (!@Job.Completed)
-            {
-                <li class="@Job.JobId">Status: Uncompleted
-                    <div id=""></div>
-                </li>
-                
-            }
-            else
-            {
-                <li>Status: Done! </li>
-            }
-
         }
     </ul>
 
@@ -53,17 +41,7 @@
             });
         });
 
-        $('.mark-completed').click(function () {
-            $.ajax({
-                type: 'GET',
-                dataType: 'html',
-                url: '@Url.Action("MarkComplete")',
-                data: {id : @Job.JobId},
-                success: function (result) {
-                    $('#complete').html(result);
-                }
-            });
-        });
+     
     </script>
 }
 
