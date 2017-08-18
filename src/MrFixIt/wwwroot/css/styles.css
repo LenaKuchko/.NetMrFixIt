@@ -1,7 +1,37 @@
 ﻿body {
     padding-top: 70px;
     color: navy;
+    font-family: 'Skranji', cursive;
+    font-size: 19px;
 }
 .claim {
     padding: 10px;
+}
+.button {
+    display: inline-block;
+    background-color: #fb8c00;
+}
+.button:hover {
+    background-color: black;
+    color: white;
+}
+.button a {
+    padding-top: 15px;
+    color: white;
+}
+.button a:hover {
+    text-decoration: none;
+}
+label {
+    font-size: 19px;    
+}
+input {
+    font-size: 22px !important;
+}
+nav ul a {
+    font-size: 20px !important;
+    
+}
+.nav, .navbar-brand {
+    margin-top: 10px;
 }

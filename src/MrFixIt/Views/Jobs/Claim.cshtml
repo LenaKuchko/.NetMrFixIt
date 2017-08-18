@@ -1,7 +1,5 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @model MrFixIt.Models.Job
 <div class="col-md-4">
@@ -14,11 +12,9 @@
             @Html.HiddenFor(model => model.Title)
             @Html.HiddenFor(model => model.Description)
 
-            <h4>@Model.Title</h4>
-            <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
-            <input class="btn-floating btn-large waves-effect waves-light red" type="submit" value="Claim This Job" /><i class="material-icons"></i>
-    }
-    <p>@Html.ActionLink("Back to list", "Index")</p>
+            <input class="button waves-effect waves-light btn" style="padding-left:35px; padding-right:35px" type="submit" value="Add" />
+            <p class="button waves-effect waves-light btn ">@Html.ActionLink("Cancel", "Index")</p>
+        }
 </div>
    
 </div>
