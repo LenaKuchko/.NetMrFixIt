@@ -1,5 +1,5 @@
---temp-output:C:\Users\Elena\Desktop\MrFixIt-dotnet\src\MrFixIt\obj\Debug\netcoreapp1.0\
---out:C:\Users\Elena\Desktop\MrFixIt-dotnet\src\MrFixIt\bin\Debug\netcoreapp1.0\MrFixIt.dll
+--temp-output:C:\Users\Elena\Desktop\MrFixIt-dotnet\src\MrFixIt\bin\src\MrFixIt\obj\Debug\netcoreapp1.0\
+--out:C:\Users\Elena\Desktop\MrFixIt-dotnet\src\MrFixIt\bin\src\MrFixIt\bin\Debug\netcoreapp1.0\MrFixIt.dll
 --define:DEBUG
 --define:TRACE
 --define:NETCOREAPP1_0
@@ -208,7 +208,7 @@
 --reference:C:\Users\Elena\.nuget\packages\System.Xml.ReaderWriter\4.3.0\ref\netstandard1.3\System.Xml.ReaderWriter.dll
 --reference:C:\Users\Elena\.nuget\packages\System.Xml.XDocument\4.3.0\ref\netstandard1.3\System.Xml.XDocument.dll
 --reference:C:\Users\Elena\.nuget\packages\System.Xml.XmlSerializer\4.0.11\ref\netstandard1.3\System.Xml.XmlSerializer.dll
---resource:"C:\Users\Elena\Desktop\MrFixIt-dotnet\src\MrFixIt\obj\Debug\netcoreapp1.0\MrFixItdotnet-compile.deps.json",MrFixIt.deps.json
+--resource:"C:\Users\Elena\Desktop\MrFixIt-dotnet\src\MrFixIt\bin\src\MrFixIt\obj\Debug\netcoreapp1.0\MrFixItdotnet-compile.deps.json",MrFixIt.deps.json
 C:\Users\Elena\Desktop\MrFixIt-dotnet\src\MrFixIt\Program.cs
 C:\Users\Elena\Desktop\MrFixIt-dotnet\src\MrFixIt\Startup.cs
 C:\Users\Elena\Desktop\MrFixIt-dotnet\src\MrFixIt\Controllers\AboutController.cs
