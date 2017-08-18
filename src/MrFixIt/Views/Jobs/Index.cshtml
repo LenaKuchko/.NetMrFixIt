@@ -7,31 +7,34 @@
 </div>
 @foreach (var Job in Model)
 {
-    <div class="card">
-        <div class="card-image">
-            <img src="images/sample-1.jpg">
-            <span class="card-title">Card Title</span>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-image">
+                <img src="http://www.allaroundmaintenanceinc.com/wp-content/uploads/2016/01/Roof-Repair-Portland.jpeg">
+                <span class="card-title">@Job.Title</span>
+            </div>
+            <div class="card-content">
+                @Job.Description
+                @if (Job.Worker == null)
+                {
+                    <p>
+                        This job is unclaimed.
+                        <div id="@Job.JobId"></div>
+                    </p>
+                }
+                else
+                {
+                    <p>Claimed by @Job.Worker.FirstName @Job.Worker.LastName</p>
+                }
+            </div>
+            <div class="@Job.JobId card-action">
+                Claim job
+            </div>
         </div>
     </div>
-    <ul>
-        <li>@Job.Title</li>
-        <ul>
-            <li>@Job.Description</li>
-        </ul>
-        @if (Job.Worker == null)
-        {
-            <li class="@Job.JobId">
-                This job is unclaimed.
-                <div id="@Job.JobId"></div>
-            </li>
-        }
-        else
-        {
-            <li>This Job is claimed by @Job.Worker.FirstName @Job.Worker.LastName</li>
-        }
-    </ul>
 
-    <hr />
+
+
 
     <script type="text/javascript">
         $('.@Job.JobId').click(function () {

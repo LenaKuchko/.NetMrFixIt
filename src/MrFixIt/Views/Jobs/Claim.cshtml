@@ -4,16 +4,21 @@
 @{
 }
 @model MrFixIt.Models.Job
+<div class="col-md-4">
+    <div class="card claim">
+        <h3>Would you like to do this job?</h3>
+        <hr />
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(model => model.JobId)
+            @Html.HiddenFor(model => model.Title)
+            @Html.HiddenFor(model => model.Description)
 
-<h2>Would you like to do this job?</h2>
-<hr />
-@using (Html.BeginForm())
-{
-    @Html.HiddenFor(model => model.JobId)
-    @Html.HiddenFor(model => model.Title)
-    @Html.HiddenFor(model => model.Description)
-
-    <h4>@Model.Title</h4>
-    <input type="submit" value="Claim This Job" />
-}
-<p>@Html.ActionLink("Back to list", "Index")</p>
+            <h4>@Model.Title</h4>
+            <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+            <input class="btn-floating btn-large waves-effect waves-light red" type="submit" value="Claim This Job" /><i class="material-icons"></i>
+    }
+    <p>@Html.ActionLink("Back to list", "Index")</p>
+</div>
+   
+</div>

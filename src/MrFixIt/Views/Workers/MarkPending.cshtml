@@ -1,15 +1,22 @@
-﻿
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 @model MrFixIt.Models.Job
 
-<h2>You are about to mark this job as your current job</h2>
-<hr />
-@using (Html.BeginForm())
-{
-    @Html.HiddenFor(model => model.JobId)
-    @Html.HiddenFor(model => model.Title)
-    @Html.HiddenFor(model => model.Description)
+<div class="col-md-4">
+    <div class="card">
+        <h2>You are about to mark this job as your current job</h2>
+        <hr />
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(model => model.JobId)
+            @Html.HiddenFor(model => model.Title)
+            @Html.HiddenFor(model => model.Description)
 
-    <h4>@Model.Title</h4>
-    <input type="submit" value="Mark as current job" />
-}
-<p>@Html.ActionLink("Back to list", "Index")</p>
+            <h4>@Model.Title</h4>
+            <input class="waves-effect waves-light btn" type="submit" value="Mark as current job" />
+        }
+        <p>@Html.ActionLink("Back to list", "Index")</p>
+    </div>
+  
+</div>
