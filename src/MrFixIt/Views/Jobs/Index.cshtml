@@ -14,14 +14,25 @@
         </ul>
         @if (Job.Worker == null)
         {
-        <li class="get-claim">This job is unclaimed.</li>
+            <li class="get-claim">
+                This job is unclaimed.
+                <div id="claim"></div>
+            </li>
         }
         else
         {
-            <li class="btn">This Job is claimed by @Job.Worker.FirstName @Job.Worker.LastName</li>
+            <li class="mark-complete">This Job is claimed by @Job.Worker.FirstName @Job.Worker.LastName</li>
+            if (!@Job.Completed)
+            {
+                <li>Status: Uncompleted</li>
+            }
+            else
+            {
+                <li>Status: Done! </li>
+            }
+
         }
     </ul>
-    <div id="claim"></div>
 
     <hr />
 
@@ -35,6 +46,18 @@
                 data: {id : @Job.JobId},
                 success: function (result) {
                     $('#claim').html(result);
+                }
+            });
+        });
+
+        $('.mark-complete').click(function () {
+            $.ajax({
+                type: 'GET',
+                dataType: 'html',
+                url: '@Url.Action("MarkComplete")',
+                data: {id : @Job.JobId},
+                success: function (result) {
+                    $('#complete').html(result);
                 }
             });
         });
