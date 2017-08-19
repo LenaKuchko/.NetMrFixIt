@@ -33,12 +33,16 @@
                     <li>
                         @Html.ActionLink("Hire Us", "Index", "Jobs")
                     </li>
+                   
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>
                             @Html.ActionLink("Worker Dashboard", "Index", "Workers")
                         </li>
                     }
+                    <li>
+                        @Html.ActionLink("Login", "Login", "Account")
+                    </li>
 
                     @if (User.Identity.IsAuthenticated)
                     {
