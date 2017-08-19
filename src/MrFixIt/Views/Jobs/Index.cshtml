@@ -21,15 +21,18 @@
                         This job is unclaimed.
                         <div id="@Job.JobId"></div>
                     </p>
+                    <div class="@Job.JobId card-action">
+                        Claim job
+                    </div>
                 }
                 else
                 {
-                    <p>Claimed by @Job.Worker.FirstName @Job.Worker.LastName</p>
+                    <div class="card-action">
+                        Claimed by @Job.Worker.FirstName @Job.Worker.LastName
+                    </div>
                 }
             </div>
-            <div class="@Job.JobId card-action">
-                Claim job
-            </div>
+            
         </div>
     </div>
 

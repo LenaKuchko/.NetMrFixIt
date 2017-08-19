@@ -4,71 +4,69 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-
-    <div class="text-left">
-        <h4>Hello Worker @Model.FirstName @Model.LastName. You are Logged In</h4>
-        <h3>Your Current Jobs:</h3>
-        @foreach (var Job in Model.Jobs)
-        {
-            <h5>@Job.Title</h5>
-
-            @if (!@Job.Completed)
-            {
-                <div class="@Job.JobId">Status: Uncomplete! Change status</div>
-                @if (@Job.Pending)
+    <h2>Hello Worker @Model.FirstName @Model.LastName!</h2>
+    <h3>Your Current Jobs:</h3>
+    <div class="collection">
+    @foreach (var Job in Model.Jobs)
+    {
+            <a class="collection-item avatar">
+                <img src="http://www.allaroundmaintenanceinc.com/wp-content/uploads/2016/01/Roof-Repair-Portland.jpeg" alt="" class="circle">
+                <div class="title">@Job.Title</div>
+                <br />
+                @if (!@Job.Completed)
                 {
-                    <div>Current job!</div>
+                    <div class="@Job.JobId content">Status: Uncomplete! Change status</div>
+                    @if (@Job.Pending)
+                    {
+                        <div>Current job!</div>
+                    }
+                    else
+                    {
+                        <div class="@Job.JobId@Job.Pending content">Mark as current job!</div>
+                    }
                 }
                 else
                 {
-                    <div class="@Job.JobId@Job.Pending">Mark as current job!</div>
+                    <div>Status: Complete!</div>
                 }
-                
-            }
-            else
-            {
-                <div>Status: Complete!</div>
-                
-            }
+                <div id="@Job.JobId"></div>
+            </a>
 
-            <div id="@Job.JobId"></div>
-            <hr />
             <script type="text/javascript">
-                $('.@Job.JobId').click(function () {
-                    console.log("Hi");
-                    $.ajax({
-                        type: 'GET',
-                        dataType: 'html',
-                        url: '@Url.Action("MarkComplete")',
-                        data: {id : @Job.JobId},
-                        success: function (result) {
-                            $('#@Job.JobId').html(result);
-                        }
+                    $('.@Job.JobId').click(function () {
+                        console.log("Hi");
+                        $.ajax({
+                            type: 'GET',
+                            dataType: 'html',
+                            url: '@Url.Action("MarkComplete")',
+                            data: {id : @Job.JobId},
+                            success: function (result) {
+                                $('#@Job.JobId').html(result);
+                            }
+                        });
                     });
-                });
 
-                $('.@Job.JobId@Job.Pending').click(function () {
-                    console.log("Hi");
-                    $.ajax({
-                        type: 'GET',
-                        dataType: 'html',
-                        url: '@Url.Action("MarkPending")',
-                        data: {id : @Job.JobId},
-                        success: function (result) {
-                            $('#@Job.JobId').html(result);
-                        }
+                    $('.@Job.JobId@Job.Pending').click(function () {
+                        console.log("Hi");
+                        $.ajax({
+                            type: 'GET',
+                            dataType: 'html',
+                            url: '@Url.Action("MarkPending")',
+                            data: {id : @Job.JobId},
+                            success: function (result) {
+                                $('#@Job.JobId').html(result);
+                            }
+                        });
                     });
-                });
             </script>
-
-        }
-        @if (Model.Avaliable)
-        {
-            <h2>Please @Html.ActionLink("select a job", "Index", "Jobs").</h2>
-        }
-        else
-        {
-            <p>You are already assigned to a job.</p>
-        }
+    }
+    @if (Model.Avaliable)
+    {
+        <h2>Please @Html.ActionLink("select a job", "Index", "Jobs").</h2>
+    }
+    else
+    {
+        <p>You are already assigned to a job.</p>
+    }
     </div>
-}
+ }

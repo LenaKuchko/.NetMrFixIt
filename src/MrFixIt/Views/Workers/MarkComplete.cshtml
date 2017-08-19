@@ -8,10 +8,8 @@
 @using (Html.BeginForm())
 {
     @Html.HiddenFor(model => model.JobId)
-    @*@Html.HiddenFor(model => model.Title)
-    @Html.HiddenFor(model => model.Description)*@
 
     <h4>@Model.Title</h4>
-    <input type="submit" value="Mark as complete" />
+    <input class="button waves-effect waves-light btn" type="submit" value="Mark as complete" />
 }
 <p>@Html.ActionLink("Back to list", "Index")</p>

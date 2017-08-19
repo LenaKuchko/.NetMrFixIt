@@ -3,6 +3,7 @@
     color: navy;
     font-family: 'Skranji', cursive;
     font-size: 19px;
+    background-color: snow;
 }
 .claim {
     padding: 10px;
@@ -34,4 +35,15 @@ nav ul a {
 }
 .nav, .navbar-brand {
     margin-top: 10px;
+}
+.card-content {
+    background-color: #ffb74d;
+}
+.collection a.collection-item {
+   color: #ffb74d;
+
+}
+.title {
+    color: black;
+    font-size: 26px !important;
 }
